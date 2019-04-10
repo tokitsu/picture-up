@@ -1,5 +1,5 @@
 <h3>新しく写真をUPしよう！！</h3>
-<%= form_with(model: @blog, local: true) do |form| %>
+<%= form_with(model: @blog, local: true, url: confirm_blogs_path) do |form| %>
 <%= form.label :タイトル%><br>
 <%= form.text_field :title%><br>
 <%= form.label :画像 %><br>

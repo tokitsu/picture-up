@@ -5,7 +5,11 @@ class BlogsController < ApplicationController
     
     def create
         @blog = Blog.new(blog_params)
-        if @blog.save
+        @blog.user_id = current_user.id
+        if params[:back]
+            render "new"
+        elsif
+            @blog.save
             redirect_to blogs_path
         else
             render "new"
@@ -30,6 +34,10 @@ class BlogsController < ApplicationController
         @blog = Blog.find(params[:id])
         @blog.save
         redirect_to blogs_path
+    end
+    
+    def confirm
+        @blog = Blog.new(blog_params)
     end
     
     private

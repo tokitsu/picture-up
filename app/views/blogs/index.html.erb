@@ -1,9 +1,13 @@
 <% @blogs.each do |blog|%>
+<%= blog.user.name %><br>
 <%= blog.title%><br>
 <%= image_tag blog.image %><br>
 <%= blog.content%><br>
+<% if current_user.id == blog.user_id %>
 <%= link_to "編集", edit_blog_path(blog.id) %>
 <%= link_to "削除", blog_path(blog.id), method: :delete, data:{ confirm: '本当に削除していいですか？'}%><br>
+<% else %>
+<% end %>
 <% end %><br>
 
 <%= link_to "写真をUPする", new_blog_path %><br>

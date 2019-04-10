@@ -1,0 +1,9 @@
+<h3><%= @user.name %>のページ</h3>
+<%= form_with(model: @user,local: true) do |f| %>
+<%= f.label :名前 %><br>
+<%= f.text_field :name %><br>
+<%= f.label :メールアドレス %><br>
+<%= f.email_field :email %><br>
+
+<%= f.submit "登録する" %>
+<% end %>
