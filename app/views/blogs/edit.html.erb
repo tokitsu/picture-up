@@ -2,7 +2,12 @@
 <%= form.label :タイトル%><br>
 <%= form.text_field :title%><br>
 <%= form.label :画像 %><br>
+<% if @blog.image? %>
+<%= image_tag @blog.image %><br>
+<%= form.submit "画像を削除する", name: "back" %><br>
+<% else %>
 <%= form.file_field:image %><br>
+<% end %>
 <%#= f.hidden_field :image_cache %>
 <%= form.label :内容%><br>
 <%= form.text_field :content%><br>

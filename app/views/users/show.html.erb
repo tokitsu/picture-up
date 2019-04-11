@@ -1,9 +1,8 @@
 <h3><%= @user.name %>のページ</h3>
 <%= image_tag @user.image %>
 <h3>メールアドレス:<%= @user.email%></h3>
-<%= link_to "プロフィールを変更する", edit_user_path %><br>
-<%= link_to "写真を投稿する", new_blog_path %><br>
-<%= link_to "みんなの写真を見る", blogs_path %>
-
+<%= link_to "投稿する", new_blog_path %><br>
+<%= link_to "みんなの写真を見る", blogs_path %><br><br>
+<%= link_to "設定を変更する", edit_user_path %><br>
 
 

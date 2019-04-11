@@ -1,0 +1,12 @@
+<h3>詳細画面</h3>
+<h5>タイトル</h5>
+<h5><%= @blog.title%></h5><br>
+<h5>内容</h5>
+<h5><%= @blog.content%></h5><br>
+<h5>イメージ</h5>
+<%= image_tag @blog.image %><br>
+ </div>
+</div> 
+<h4><%= link_to "編集する", edit_blog_path%></h4>
+<h4><%= link_to "投稿一覧へ", blogs_path%></h4>
+

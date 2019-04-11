@@ -16,8 +16,18 @@ class BlogsController < ApplicationController
         end
     end
     
+    def show
+        @blog = Blog.find(params[:id])
+        @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    end
+    
     def index
         @blogs = Blog.all
+    end
+    
+    def like
+        @user = User.find(params[:id])
+         @blog = Blog.new(blog_params)
     end
     
     def edit
@@ -32,8 +42,14 @@ class BlogsController < ApplicationController
     
     def update
         @blog = Blog.find(params[:id])
-        @blog.save
-        redirect_to blogs_path
+        if  params[:back]
+            @blog.remove_image!
+            render "edit"
+        elsif    @blog.update(blog_params)
+            redirect_to blogs_path
+        else
+            render "edit"
+        end
     end
     
     def confirm
@@ -44,5 +60,6 @@ class BlogsController < ApplicationController
     
     def blog_params
         params.require(:blog).permit(:title,:content,:image,:image_cache)
+        
     end
 end
