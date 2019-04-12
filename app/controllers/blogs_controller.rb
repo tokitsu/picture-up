@@ -10,6 +10,7 @@ class BlogsController < ApplicationController
             render "new"
         elsif
             @blog.save
+            ContactMailer.contact_mail(@blog).deliver
             redirect_to blogs_path
         else
             render "new"
