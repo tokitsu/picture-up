@@ -26,8 +26,8 @@ class BlogsController < ApplicationController
     end
     
     def like
-        @user = User.find(params[:id])
-         @blog = Blog.new(blog_params)
+        @favorites = Favorite.all
+        @user = current_user
     end
     
     def edit

@@ -1,5 +1,11 @@
+<h2><%= @user.name %>のページ</h2>
 <h3>お気に入り写真</h3>
 
-<% @users.each do |user|%>
-<% favorite.user.blog.title %>
-<% image_tag favorite.user.blog.image %>
+<% @favorites.each do |favorite|%>
+<%= favorite.blog.user.name%>の写真<br>
+<%= favorite.blog.title %><br>
+<%= image_tag favorite.blog.image %><br>
+<%= favorite.blog.content %><br><br>
+<% end %>
+
+<%= link_to "投稿一覧に戻る", blogs_path %>
