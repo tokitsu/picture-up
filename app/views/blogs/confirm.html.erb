@@ -1,10 +1,21 @@
+この写真をアップしますか？？
 <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <%= form.hidden_field :image_cache %>
-  <p>タイトル<br><%= @blog.title %></p>
-  <p><%= image_tag @blog.image %></p>
-  <p>本文<br><%= @blog.content %></p>
-  <%= form.submit "投稿する" %>
-  <%= form.submit "編集し直す", name:'back' %>
+  <ul class="list-group">
+    <%= form.hidden_field :title %>
+    <%= form.hidden_field :content %>
+    <%= form.hidden_field :image_cache %>
+    <li class="list-group-item">
+      <p>タイトル<br><%= @blog.title %></p>
+    </li>
+    <li class="list-group-item">
+      <p><%= image_tag @blog.image %></p>
+    </li>
+    <li class="list-group-item">
+      <p>本文<br><%= @blog.content %></p>
+    </li>
+    <li class="list-group-item">
+      <%= form.submit "投稿する" %>
+      <%= form.submit "編集し直す", name:'back' %>
+    </li>  
+  </ul>
 <% end %>

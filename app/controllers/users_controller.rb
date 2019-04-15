@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    def top
+    end
     
     def new
         @user = User.new
@@ -8,6 +10,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
+            flash[:notice]= "ログインしました！"
             redirect_to user_path(@user.id)
         else
             render "new"
@@ -22,9 +25,10 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if @user.update(user_params)
            session[:user_id] = @user.id
+           flash[:notice]= "登録内容を変更しました！"
            redirect_to user_path(@user.id)
         else
-            render "new"
+            render "edit"
         end
     end
     
@@ -32,8 +36,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
   
- 
-    
     private
     
     def user_params

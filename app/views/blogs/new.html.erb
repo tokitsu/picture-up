@@ -1,13 +1,25 @@
-<h3>新しく写真をUPしよう！！</h3>
 <%= form_with(model: @blog, local: true, url: confirm_blogs_path) do |form| %>
-<%= form.label :タイトル%><br>
-<%= form.text_field :title%><br>
-<%= form.label :画像 %><br>
-<%= form.file_field:image %><br>
-<%#= f.hidden_field :image_cache %>
-<%= form.label :内容%><br>
-<%= form.text_field :content%><br>
-<%= form.submit "投稿する" %><br>
-<% end %>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <h4>新しく写真をUPしよう！！</h4>
+    </li>
+    <li class="list-group-item">
+      <%= form.label :タイトル%><br>
+      <%= form.text_field :title, size: 40 %><br>
+    </li>
+    <li class="list-group-item">
+      <%= form.label :画像 %><br>
+      <%= form.file_field:image %><br>
+    </li>
+    <li class="list-group-item">
+      <%= form.label :内容%><br>
+      <%= form.text_area :content, size: "40x10" %><br>
+    </li>
+    <li class="list-group-item">
+      <%= form.submit "投稿する", class:"btn btn-primary btn-xs" %><br>
+    </li>
+  </ul>
+  <h5><%= link_to "👉みんなの写真をみる", blogs_path %></h5>
+<% end %> 
 
-<%= link_to "みんなの写真をみる", blogs_path %>
+

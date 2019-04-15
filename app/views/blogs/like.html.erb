@@ -1,11 +1,19 @@
-<h2><%= @user.name %>のページ</h2>
-<h3>お気に入り写真</h3>
-
+<h4><%= @user.name %>のお気に入り写真</h4>
 <% @favorites.each do |favorite|%>
-<%= favorite.blog.user.name%>の写真<br>
-<%= favorite.blog.title %><br>
-<%= image_tag favorite.blog.image %><br>
-<%= favorite.blog.content %><br><br>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <%= favorite.blog.user.name%>さんの写真<br>
+    </li>
+    <li class="list-group-item">
+      タイトル　　<%= favorite.blog.title %><br>
+    </li>
+    <li class="list-group-item">
+      <%= image_tag favorite.blog.image %><br>
+    </li>
+    <li class="list-group-item">
+      内容　　<%= favorite.blog.content %><br><br>
+    </li>
+  </ul>
 <% end %>
+<h5><%= link_to "　👉投稿一覧に戻る", blogs_path %></h5>
 
-<%= link_to "投稿一覧に戻る", blogs_path %>

@@ -1,17 +1,34 @@
-<%= form_with(model: @blog, local: true) do |form| %>
-<%= form.label :タイトル%><br>
-<%= form.text_field :title%><br>
-<%= form.label :画像 %><br>
-<% if @blog.image? %>
-<%= image_tag @blog.image %><br>
-<%= form.submit "画像を削除する", name: "back" %><br>
-<% else %>
-<%= form.file_field:image %><br>
-<% end %>
-<%#= f.hidden_field :image_cache %>
-<%= form.label :内容%><br>
-<%= form.text_field :content%><br>
-<%= form.submit "投稿する" %><br>
-<% end %>
+<ul class="list-group">
+  <%= form_with(model: @blog, local: true) do |form| %>
+    <li class="list-group-item">
+      <h4>編集画面</h4>
+    </li>
+    <li class="list-group-item">
+      <%= form.label :タイトル%><br>
+      <%= form.text_field :title, size: "40" %><br>
+    </li>
+    <li class="list-group-item">
+      <%= form.label :画像 %><br>
+      <% if @blog.image? %>
+        <%= image_tag @blog.image %><br>
+        <%= form.submit "画像を削除する", name: "back",class:"btn btn-danger btn-xs" %><br>
+      <% else %>
+        <%= form.file_field:image %><br>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <%= form.label :内容%><br>
+      <%= form.text_area :content, size: "40x10"%><br>
+    </li>
+    <li class="list-group-item">
+      <%= form.submit "投稿する", class:"btn btn-primary btn-xs" %><br>
+    </li>
+  <% end %>
+</ul>
+<h5><%= link_to "　👉みんなの投稿に戻る",blogs_path %></h5>
 
-<%= link_to "みんなの投稿に戻る",blogs_path %>
+
+
+
+
+  

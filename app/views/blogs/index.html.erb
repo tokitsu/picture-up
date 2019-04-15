@@ -1,16 +1,31 @@
-<h3><%= current_user.name %>のページ</h3>
+<h4><%= current_user.name %>さんのページ</h4>
+<% notice %>
 <% @blogs.each do |blog|%>
-<%= blog.user.name %><br>
-<%= blog.title%><br>
-<%= image_tag blog.image %><br>
-<%= blog.content%><br>
-<%= link_to "詳細", blog_path(blog.id) %>
-<% if current_user.id == blog.user_id %>
-<%= link_to "編集", edit_blog_path(blog.id) %>
-<%= link_to "削除", blog_path(blog.id), method: :delete, data:{ confirm: '本当に削除していいですか？'}%><br><br>
-<% else %><br><br>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <%= blog.user.name %>さんの写真<br>
+    </li>
+    <li class="list-group-item">
+      タイトル　<%= blog.title%><br>
+    </li>
+    <li class="list-group-item">
+      <%= image_tag blog.image %><br>
+    </li>
+    <li class="list-group-item">
+      内容　<%= blog.content%><br>
+    </li>
+    <li class="list-group-item">
+      <%= link_to "詳細(お気に入り登録画面)", blog_path(blog.id), class:"btn btn-primary btn-xs"%><br>
+      <% if current_user.id == blog.user_id %>
+        <%= link_to "編集", edit_blog_path(blog.id), class:"btn btn-success btn-xs" %>
+        <%= link_to "削除", blog_path(blog.id), class:"btn btn-danger btn-xs", method: :delete, data:{ confirm: '本当に削除していいですか？'} %><br><br>
+      <% else %><br><br>                                                                                      
+      <% end %>
+    </li>
+  </ul>
 <% end %>
-<% end %>
-<%= link_to "写真をUPする", new_blog_path %><br>
-<%= link_to "プロフィールに戻る", user_path(current_user.id) %><br>
-<%= link_to "お気に入り一覧", 'blogs/like' %><br>
+<h5>
+  <%= link_to "👉お気に入り一覧", blogs_like_path %><br>
+  <%= link_to "👉写真をUPする", new_blog_path %><br>
+  <%= link_to "👉プロフィールに戻る", user_path(current_user.id) %><br>
+</h5>

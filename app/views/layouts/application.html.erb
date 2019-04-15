@@ -3,23 +3,26 @@
   <head>
     <title>SessionLogin</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% flash.each do |key,value|%>
-      <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-      
+    <header>
+      <h5 class="headername">picture</h5>
       <% if logged_in? %>
-      <%= link_to "プロフィール", user_path(current_user.id)%>
-      <%= link_to "ログアウトする", session_path(current_user.id), method: :delete %>
+        <%= link_to "　　プロフィール", user_path(current_user.id), class:"headerlink" %>
+        <%= link_to "　　ログアウトする", session_path(current_user.id), method: :delete, class:"headerlink" %>
       <% else %>
-      <%= link_to "新規登録する", new_user_path %>
-      <%= link_to "ログインする", new_session_path %>
-      <% end %><br>
-    <%= yield %>
+        <%= link_to "　　新規登録する", new_user_path, class:"headerlink" %>
+        <%= link_to "　　ログインする", new_session_path, class:"headerlink" %>
+      <% end %>
+    </header>
+    <div class="main">
+      <% flash.each do |key,value|%>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,8 +1,18 @@
-<h3><%= @user.name %>のページ</h3>
-<%= image_tag @user.image %>
-<h3>メールアドレス:<%= @user.email%></h3>
-<%= link_to "投稿する", new_blog_path %><br>
-<%= link_to "みんなの写真を見る", blogs_path %><br><br>
-<%= link_to "設定を変更する", edit_user_path %><br>
-
-
+<ul class="list-group">
+  <li class="list-group-item">
+    <h4><%= @user.name %>のプロフィール</h4>
+    <h5><%= @user.email %></h5>
+  </li>
+  <li class="list-group-item">
+    <%= image_tag @user.image %> 
+  </li>
+  <li class="list-group-item">
+    <%= link_to "👉　写真をUPする", new_blog_path %>
+  </li>
+  <li class="list-group-item">
+    <%= link_to "👉　みんなの写真を見る", blogs_path %>
+  </li>
+  <li class="list-group-item">
+    <%= link_to "プロフィールを変更する", edit_user_path %>
+  </li>
+</ul>

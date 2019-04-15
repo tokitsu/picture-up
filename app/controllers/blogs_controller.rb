@@ -11,6 +11,7 @@ class BlogsController < ApplicationController
         elsif
             @blog.save
             ContactMailer.contact_mail(@blog).deliver
+            flash[:notice]= "写真を投稿しました！！"
             redirect_to blogs_path
         else
             render "new"
@@ -38,6 +39,7 @@ class BlogsController < ApplicationController
     def destroy
         @blog = Blog.find(params[:id])
         @blog.destroy
+        flash[:notice]= "写真を削除しました！！"
         redirect_to blogs_path
     end
     
@@ -46,7 +48,8 @@ class BlogsController < ApplicationController
         if  params[:back]
             @blog.remove_image!
             render "edit"
-        elsif    @blog.update(blog_params)
+        elsif  @blog.update(blog_params)
+            flash[:notice]= "写真を編集しました！！"
             redirect_to blogs_path
         else
             render "edit"
@@ -61,6 +64,5 @@ class BlogsController < ApplicationController
     
     def blog_params
         params.require(:blog).permit(:title,:content,:image,:image_cache)
-        
     end
 end
