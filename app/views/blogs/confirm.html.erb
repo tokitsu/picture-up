@@ -14,8 +14,8 @@
       <p>本文<br><%= @blog.content %></p>
     </li>
     <li class="list-group-item">
-      <%= form.submit "投稿する" %>
-      <%= form.submit "編集し直す", name:'back' %>
+      <%= form.submit "投稿する", class:"btn btn-primary btn-xs" %>
+      <%= form.submit "編集し直す", name:'back', class:"btn btn-danger btn-xs" %>
     </li>  
   </ul>
 <% end %>
