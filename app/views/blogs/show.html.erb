@@ -16,7 +16,7 @@
       <% if @favorite.present? %>
         <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger btn-xs' %>
       <% else %>
-        <%= link_to 'この写真をお気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+        <%= link_to 'この写真をお気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary btn-xs' %>
       <% end %>
     <% else %>
       <%= link_to "編集する", edit_blog_path, class:"btn btn-success btn-xs" %>

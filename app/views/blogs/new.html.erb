@@ -2,6 +2,11 @@
   <ul class="list-group">
     <li class="list-group-item">
       <h4>新しく写真をUPしよう！！</h4>
+      <% if @blog.errors.any? %>
+        <% @blog.errors.full_messages.each do |message| %>
+          <%= message %><br>
+        <% end %>
+      <% end %>
     </li>
     <li class="list-group-item">
       <%= form.label :タイトル%><br>
