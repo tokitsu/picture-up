@@ -1,4 +1,9 @@
 <h4><%= current_user.name %>さんのページ</h4>
+<h5>
+  <%= link_to "お気に入り一覧", blogs_like_path %><br>
+  <%= link_to "写真をUPする", new_blog_path %><br>
+  <%= link_to "プロフィールに戻る", user_path(current_user.id) %><br>
+</h5>
 <% notice %>
 <% @blogs.each do |blog|%>
   <ul class="list-group">

@@ -5,13 +5,10 @@ class BlogsController < ApplicationController
   
   def create
     @blog = Blog.new(blog_params)
-    if current_user == nil
-      redirect_to new_user_path
-    elsif  
-      params[:back]
+    @blog.user = current_user
+    if params[:back]
       render "new"
     elsif
-      @blog.user_id = current_user.id
       @blog.save
       flash[:notice]= "写真を投稿しました！！"
       redirect_to blogs_path
@@ -50,7 +47,7 @@ class BlogsController < ApplicationController
     if params[:back]
       @blog.remove_image!
       render "edit"
-    elsif  @blog.update(blog_params)
+    elsif @blog.update(blog_params)
       flash[:notice]= "写真を編集しました！！"
       redirect_to blogs_path
     else
