@@ -5,13 +5,13 @@ class BlogsController < ApplicationController
   
   def create
     @blog = Blog.new(blog_params)
-    @blog.user_id = current_user.id
     if current_user == nil
       redirect_to new_user_path
     elsif  
       params[:back]
       render "new"
     elsif
+      @blog.user_id = current_user.id
       @blog.save
       flash[:notice]= "写真を投稿しました！！"
       redirect_to blogs_path
