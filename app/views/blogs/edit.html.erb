@@ -1,4 +1,9 @@
 <ul class="list-group">
+  <% if @blog.errors.any? %>
+    <% @blog.errors.full_messages.each do |message| %>
+      <%= message %><br>
+    <% end %>
+  <% end %>
   <%= form_with(model: @blog, local: true) do |form| %>
     <li class="list-group-item">
       <h4>編集画面</h4>
