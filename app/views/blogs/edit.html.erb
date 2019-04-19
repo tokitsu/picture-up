@@ -14,12 +14,8 @@
     </li>
     <li class="list-group-item">
       <%= form.label :画像 %><br>
-      <% if @blog.image? %>
         <%= image_tag @blog.image %><br>
-        <%= form.submit "画像を削除する", name: "back",class:"btn btn-danger btn-xs" %><br>
-      <% else %>
         <%= form.file_field:image %><br>
-      <% end %>
     </li>
     <li class="list-group-item">
       <%= form.label :内容%><br>
