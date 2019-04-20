@@ -1,6 +1,11 @@
 class BlogsController < ApplicationController
   def new
-    @blog = Blog.new
+    @current_user == current_user
+    if @current_user == nil
+      redirect_to new_user_path
+    elsif 
+      @blog = Blog.new
+    end
   end
   
   def create
@@ -58,7 +63,11 @@ class BlogsController < ApplicationController
   def confirm
     @blog = Blog.new(blog_params)
     @blog.user = current_user
+    if @blog.user == nil
+      redirect_to new_user_path
+    else
     render "new" if @blog.invalid?
+    end
   end
   
   private

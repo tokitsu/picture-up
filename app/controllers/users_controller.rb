@@ -23,7 +23,10 @@ class UsersController < ApplicationController
     
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    @current_user == current_user
+    if @current_user == nil
+      redirect_to new_user_path
+    elsif @user.update(user_params)
       session[:user_id] = @user.id
       flash[:notice]= "登録内容を変更しました！"
       redirect_to user_path(@user.id)
