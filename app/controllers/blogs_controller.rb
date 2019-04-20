@@ -49,7 +49,9 @@ class BlogsController < ApplicationController
   
   def update
     @blog = Blog.find(params[:id])
-    if params[:back]
+    if @blog.user != current_user
+      redirect_to blogs_path
+    elsif params[:back]
       @blog.remove_image!
       render "edit"
     elsif @blog.update(blog_params)
